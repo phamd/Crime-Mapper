@@ -6,6 +6,8 @@
     "async": "*",
     "express": "*",
     "promise": "*",
-    "body-parser": "*"
+    "body-parser": "*",
+    "cheerio": "*",
+    "request": "*"
   }
 }
