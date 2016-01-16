@@ -1,0 +1,11 @@
+{
+  "name": "DeltaHacks2",
+  "version": "0.0.1",
+  "dependencies": {
+    "path": "*",
+    "async": "*",
+    "express": "*",
+    "promise": "*",
+    "body-parser": "*"
+  }
+}
