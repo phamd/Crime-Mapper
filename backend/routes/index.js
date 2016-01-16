@@ -2,7 +2,8 @@ var express = require('express'),
     router = express.Router(),
     request = require('request'),
     cheerio = require('cheerio'),
-    secrets = require('../../secrets.json');
+    secrets = require('../../secrets.json'),
+    crime_data = require('../crime_data');
 
 module.exports = router;
 
@@ -13,12 +14,13 @@ router.get('/map', function(req, res){
    
    request(url, function(err, result){
       if(!err) {
-          res.end(result.body.substring(2, result.body.length-3));
+          crime_data.getCrimes([43.657799, -79.71153], function(data){
+              res.end(data);
+          });
       } 
       else {
         res.end({"server error": "data not retrieved"});
       }
    });
-   
 });
 
