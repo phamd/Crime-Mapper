@@ -1,15 +1,19 @@
 var express = require('express'),
     router = express.Router(),
+    url = require('url'),
     secrets = require('../../secrets.json'),
     crime_data = require('../crime_data');
 
 module.exports = router;
 
 router.get('/map', function(req, res){
-   console.log('Map page'); 
+    var query = url.parse(req.url, true).query;
+    var lat = query.lat;
+    var long = query.long;
+    console.log("Requesting " + long+", " + lat); 
    
-   crime_data.getCrimes([43.657799, -79.71153], function(data){
-     res.end(data);
-   });
+    crime_data.getCrimes([lat, long], function(data){
+      res.end(data);
+    });
 });
 
