@@ -16,7 +16,7 @@ module.exports = {
         console.log((parseFloat(originCoords[1])+parseFloat(destinationCoords[1]))/2);
         request(url, function(err, result){
             if(!err) {
-                cb(result.body.substring(2, result.body.length-3));
+                cb(result.body.substring(2, result.body.length-1));
             } 
             else {
                 cb({"server error": "data not retrieved"});
