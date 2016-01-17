@@ -1,10 +1,13 @@
 var express = require('express'),
     router = express.Router(),
     url = require('url'),
-    secrets = require('../../secrets.json'),
-    crime_data = require('../crime_data');
+    secrets = require('../secrets.json'),
+    crime_data = require('../backend/crime_data');
 
-module.exports = router;
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'DeltaHacksII' });
+});
 
 //example query hamilton: http://localhost:3000/map?lat1=43.646953&long1=-79.65844&lat2=43.2523536&long2=-79.9355499
 //example query detroit: http://localhost:3000/map?lat1=42.3650141&long1=-83.0684108&lat2=42.3887468&long2=-83.0432116
@@ -37,3 +40,4 @@ router.get('/stats', function(req, res) {
     });
 });
 
+module.exports = router;
