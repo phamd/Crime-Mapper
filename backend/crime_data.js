@@ -4,12 +4,14 @@ var express = require('express'),
     secrets = require('../secrets.json');
 
 module.exports = {
-    getCrimes: function(coords, cb) {
+    getCrimes: function(coords, range, cb) {
         var url = 'http://api.spotcrime.com/crimes.json?lat='
                         +coords[0]
                         +'&lon='
                         +coords[1]
-                        +'&radius=0.2&callback=?&key='
+                        +'&radius='
+                        + range
+                        + '0.2&callback=?&key='
                         +secrets.spotcrime_api_key;
         
         request(url, function(err, result){

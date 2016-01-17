@@ -6,13 +6,15 @@ var express = require('express'),
 
 module.exports = router;
 
+//example query: http://localhost:3000/map?lat=43.646953&long=-79.65844&range=0.2
 router.get('/map', function(req, res){
     var query = url.parse(req.url, true).query;
     var lat = query.lat;
     var long = query.long;
-    console.log("Requesting " + long+", " + lat); 
+    var range = query.range;
+    console.log("Requesting " + long+", " + lat+", " + range); 
    
-    crime_data.getCrimes([lat, long], function(data){
+    crime_data.getCrimes([lat, long], range, function(data){
       res.end(data);
     });
 });
