@@ -55,7 +55,7 @@ router.get('/coords', function(req, res) {
                 
     request(googleUrl, function(err, result){
         if(!err) {
-            res.json(JSON.parse(result.body));
+            res.json(JSON.parse(result.body).results[0]);
         } 
         else {
             res.json({"server error": "data not retrieved"});
