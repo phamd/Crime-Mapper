@@ -73,5 +73,23 @@ module.exports = {
 			}))
 
 		}
+
+		//heatmap function
+		function getHeatMapPoints() {
+			var heatMapData = [];
+
+			for (var i = 0; i < fakeCrimeData.length; i++) {
+				heatMapData.push(new google.maps.LatLng(fakeCrimeData[i]['lat'],fakeCrimeData[i]['lon']));
+			}
+
+			return heatMapData;
+		}
+
+		if (heatMapToggle) {
+			var heatmap = new google.maps.visualization.HeatmapLayer({
+				data: getHeatMapPoints(),
+				map: map
+			});
+		}
 	cb(map);
 }
