@@ -36,7 +36,30 @@ module.exports = {
          
          request(url, function(err, result){
             if(!err) {
-                cb(JSON.parse(result.body));
+                var noStateResult = JSON.parse(result.body).results;
+                if(noStateResult.length > 0) {
+                    cb(noStateResult);
+                } else {
+                    var url2 = 'https://api.import.io/store/connector/'
+                                + secrets.importio.token
+                                + "/_query?input=webpage/url:http%3A%2F%2Fwww.numbeo.com%2Fcrime%2Fcity_result.jsp%3Fcountry%3D"
+                                + location.country
+                                + "%26city%3D"
+                                + location.city
+                                + "%2C%20"
+                                + location.state
+                                + "&&_apikey="
+                                + secrets.importio.apikey;
+                    
+                    request(url2, function(err, result2){
+                        if(!err) {
+                            cb(JSON.parse(result2.body).results);
+                        } 
+                        else {
+                            cb({"server error": "data not retrieved"});
+                        }
+                    });
+                }
             } 
             else {
                 cb({"server error": "data not retrieved"});
