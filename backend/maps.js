@@ -1,6 +1,6 @@
 module.exports = {
 	getMap: function(originLat, originLon, destlat, destLon, crimeData, heatMapToggle, cb) {
-
+		
 		var customIcons = {'Arrest':'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/arrest.png?1445454105',"Arson":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/arson.png?1445454105',"Assault":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/assault.png?1445454105',"Burglary":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/burglary.png?1445454105',"Other":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/other.png?1445454105',"Robbery":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/robbery.png?1445454105', "Shooting":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/shooting.png?1445454105', "Theft":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/theft.png?1445454105', "Vandalism":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/vandalism.png?1445454105'};
 		
 		//init map			
@@ -18,7 +18,7 @@ module.exports = {
 
 		var directionsRequest = {
 			origin: new google.map.LatLng(originLat,originLon),
-			destination: new google.map.LatLng(destLat, destLon)
+			destination: new google.map.LatLng(destLat, destLon),
 			travelMode: google.maps.DirectionsTravelMode.DRIVING
 		};
 
@@ -65,12 +65,11 @@ module.exports = {
 					var icon = customIcons['Assault'];
 					break;
 			}
-			console.log(icon);
 			markers.push(new google.maps.Marker({
 				position: new google.maps.LatLng(crimeData[i]['lat'],crimeData[i]['lon']),
 				map: map,
 				icon:icon
-			}))
+			}));
 
 		}
 
@@ -78,8 +77,8 @@ module.exports = {
 		function getHeatMapPoints() {
 			var heatMapData = [];
 
-			for (var i = 0; i < fakeCrimeData.length; i++) {
-				heatMapData.push(new google.maps.LatLng(fakeCrimeData[i]['lat'],fakeCrimeData[i]['lon']));
+			for (var i = 0; i < crimeData.length; i++) {
+				heatMapData.push(new google.maps.LatLng(crimeData[i]['lat'],crimeData[i]['lon']));
 			}
 
 			return heatMapData;
@@ -92,4 +91,4 @@ module.exports = {
 			});
 		}
 	cb(map);
-}
+}}

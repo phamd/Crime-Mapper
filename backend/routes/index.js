@@ -2,7 +2,8 @@ var express = require('express'),
     router = express.Router(),
     url = require('url'),
     secrets = require('../../secrets.json'),
-    crime_data = require('../crime_data');
+    crime_data = require('../crime_data'),
+    map = require('../maps.js');
 
 module.exports = router;
 
@@ -23,10 +24,10 @@ router.get('/map', function(req, res){
        
     });
     //TODO: Add mapping function here
-    getMap(lat1,long1,lat2,long2,crimeData,heatmap,function(data){
+    map.getMap(lat1,long1,lat2,long2,crimeData,heatmap,function(data){
         //map = data;
         console.log('ok');
         res.end(data);
-    })
+    });
 });
 
