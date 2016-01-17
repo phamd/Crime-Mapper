@@ -29,7 +29,7 @@ function addressToCoord(address) {
 
 function getMap(originLat, originLon, destLat, destLon, crimeData, heatMapToggle, cb) {
 
-    var customIcons = {'Arrest':'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/arrest.png?1445454105',"Arson":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/arson.png?1445454105',"Assault":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/assault.png?1445454105',"Burglary":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/burglary.png?1445454105',"Other":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/other.png?1445454105',"Robbery":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/robbery.png?1445454105', "Shooting":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/shooting.png?1445454105', "Theft":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/theft.png?1445454105', "Vandalism":'http://s3.mylocalcrime.com.s3.amazonaws.com/images/icons/no_shadow/vandalism.png?1445454105'};
+    var customIcons = {'Arrest':'../images/arrest.png',"Arson":'../images/arson.png',"Assault":'../images/assault.png',"Burglary":'../images/theft.png',"Other":'../images/other.png',"Robbery":'../images/theft.png', "Shooting":'../images/shooting.png', "Theft":'../images/theft.png', "Vandalism":'../images/vandalism.png'};
     
     //init map			
     var map = new google.maps.Map(document.getElementById('map'), {
