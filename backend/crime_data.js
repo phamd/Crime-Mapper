@@ -42,7 +42,7 @@ module.exports = {
          
          request(url, function(err, result){
             if(!err) {
-                cb(result);
+                cb(JSON.parse(result.body));
             } 
             else {
                 cb({"server error": "data not retrieved"});
