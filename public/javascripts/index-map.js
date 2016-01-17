@@ -17,6 +17,31 @@ $('body').on('click', '#getMap', function(e) {
             console.log("map done");
         });
     });
+    
+    var city1, state1, country1;
+    var coordParams = {
+        address: $('#addressFrom').val()
+    };
+    $.get('coords?' + $.param(coordParams), function(response){
+        console.log("FROM ADD: " + $('#addressFrom').val());
+        console.log("COORDS: " + response.address_components.length);
+        city1 = response.address_components[3].long_name;
+        state1 = response.address_components[5].long_name;
+        country1 = response.address_components[6].long_name;
+        console.log("COORDS: " + city1, state1, country1);
+        
+        var statParams = {
+            state: state1,
+            country: country1,
+            city: city1
+        };
+        $.get('stats?' + $.param(statParams), function(response){
+            console.log(response.length);
+            $('#messages').html('<pre>'+JSON.stringify(response[2])+'<br />' + JSON.stringify(response[response.length-1]) + '</pre>');
+        });
+    });
+    
+    
 });
 
 

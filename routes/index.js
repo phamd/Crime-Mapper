@@ -38,7 +38,7 @@ router.get('/stats', function(req, res) {
     var country = query.country;
     var state = query.state;
     var city = query.city;
-    
+    console.log("STAT OBJE: ", country, state, city)
     crime_data.getStats({"country": country, "state": state, "city": city}, function(data){
         res.json(data);
     });
@@ -47,7 +47,7 @@ router.get('/stats', function(req, res) {
 router.get('/coords', function(req, res) {
     var query = url.parse(req.url, true).query;
     var address = query.address;
-    
+    console.log(address);
     var googleUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="
                 + address
                 + "&key="
