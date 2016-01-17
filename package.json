@@ -1,13 +1,18 @@
 {
-  "name": "DeltaHacks2",
-  "version": "0.0.1",
+  "name": "deltahacks2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
   "dependencies": {
-    "path": "*",
-    "async": "*",
-    "express": "*",
-    "promise": "*",
-    "body-parser": "*",
-    "cheerio": "*",
+    "body-parser": "~1.12.4",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "express": "~4.12.4",
+    "express-handlebars": "*",
+    "morgan": "~1.5.3",
+    "serve-favicon": "~2.2.1",
     "request": "*"
   }
 }
