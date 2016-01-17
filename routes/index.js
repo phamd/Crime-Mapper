@@ -2,13 +2,12 @@ var express = require('express'),
     router = express.Router(),
     url = require('url'),
     request = require('request'),
-    map = require('../backend/maps.js'),
     secrets = require('../secrets.json'),
     crime_data = require('../backend/crime_data');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'DeltaHacksII' });
+    res.render('index', { title: 'DeltaHacksII' });
 });
 
 //example query hamilton: http://localhost:3000/map?lat1=43.646953&long1=-79.65844&lat2=43.2523536&long2=-79.9355499
@@ -24,9 +23,8 @@ router.get('/map', function(req, res){
    
     crime_data.getCrimes([lat1, long1], [lat2, long2], function(data){
         crimeData = data;
-        console.log(crimeData)
         res.end(data);
-        /*map.getMap(lat1,long1,lat2,long2,crimeData,heatmap,function(data){
+        /*getMap(lat1,long1,lat2,long2,crimeData,heatmap,function(data){
             console.log('ok');
             res.end(data);
         });*/
@@ -54,7 +52,7 @@ router.get('/coords', function(req, res) {
                 + address
                 + "&key="
                 + secrets.google;
-    console.log("url is: " + googleUrl);
+                
     request(googleUrl, function(err, result){
         if(!err) {
             res.json(JSON.parse(result.body));
