@@ -22,5 +22,31 @@ module.exports = {
                 cb({"server error": "data not retrieved"});
             }
         });
+    },
+    
+    getStats: function(location, cb) {
+        /*var numbeoConnectionString = 'https://api.import.io/store/data/' + 
+			credentials.importio.token + '/_query?input/webpage/url=http%3A%2F%2Fwww.numbeo.com%2Fcost-of-living%2Fcity_result.jsp%3Fcountry%3D' +
+			country + '%26city%3D' + 
+			city + '%26displayCurrency=USD&_user=' + 
+			credentials.importio.user + '&_apikey=' +
+			credentials.importio.apikey;*/
+        var url = 'https://api.import.io/store/connector/'
+                    + secrets.importio.token
+                    + "/_query?input=webpage/url:http%3A%2F%2Fwww.numbeo.com%2Fcrime%2Fcity_result.jsp%3Fcountry%3D"
+                    + location.country
+                    + "%26city%3D"
+                    + location.city
+                    + "&&_apikey="
+                    + secrets.importio.apikey;
+         
+         request(url, function(err, result){
+            if(!err) {
+                cb(result);
+            } 
+            else {
+                cb({"server error": "data not retrieved"});
+            }
+         });
     }
 }

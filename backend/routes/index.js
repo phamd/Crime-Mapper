@@ -26,3 +26,14 @@ router.get('/map', function(req, res){
     });
 });
 
+router.get('/stats', function(req, res) {
+    var query = url.parse(req.url, true).query;
+    var country = query.country;
+    var state = query.state;
+    var city = query.city;
+    
+    crime_data.getStats({"country": country, "state": state, "city": city}, function(data){
+        res.json(data);
+    });
+});
+
