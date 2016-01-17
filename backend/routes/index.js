@@ -20,9 +20,13 @@ router.get('/map', function(req, res){
     crime_data.getCrimes([lat1, long1], [lat2, long2], function(data){
        crimeData = data;
        console.log(crimeData)
-       res.end(crimeData);
        
-       //TODO: Add mapping function here
     });
+    //TODO: Add mapping function here
+    getMap(lat1,long1,lat2,long2,crimeData,heatmap,function(data){
+        //map = data;
+        console.log('ok');
+        res.end(data);
+    })
 });
 

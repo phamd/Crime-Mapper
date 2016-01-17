@@ -73,6 +73,5 @@ module.exports = {
 			}))
 
 		}
-
-
+	cb(map);
 }
